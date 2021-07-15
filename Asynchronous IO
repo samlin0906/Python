@@ -8,7 +8,7 @@ def num_generator(m, n):
 async def prime_filter(m, n):         #async, msut be write
     primes = []
     for i in num_generator(m, n):
-        flag = True                                  #Define bool as Flag when the loop needs to be interrupted
+        flag = True                          #Define bool as Flag when the loop needs to be interrupted
         for j in range(2, int(i ** 0.5 + 1)):
             if i % j == 0:
                 flag = False
@@ -17,7 +17,7 @@ async def prime_filter(m, n):         #async, msut be write
             print('Prime =>', i)
             primes.append(i)
 
-        await asyncio.sleep(0.001)
+        await asyncio.sleep(0.001)   #asyncio.sleep(delay, result=None, *, loop=None)
     return tuple(primes)                         
 
 
