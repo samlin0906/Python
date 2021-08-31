@@ -25,3 +25,11 @@ arr = [0, 1, 1, 2]
 for i in range(4, 21):
     arr.append(arr[i - 1] + arr[i - 2])
 print(arr[n])
+
+
+#1014
+#直接使用int進行進位轉換,想不出來如何設防呆機制
+
+n = input()
+print(int(n, 9))
+
