@@ -33,3 +33,17 @@ print(arr[n])
 n = input()
 print(int(n, 9))
 
+
+#1025 水仙花數
+
+n, m = map(int, input().split())
+for i in range(n, m + 1):
+    digits = len(str(i))
+    total = 0             #之前設在最前面,所以找不出答案
+    for j in str(i):
+        num = int(j) ** digits
+        total = total + num
+    if total == i:
+        print(i)
+
+
