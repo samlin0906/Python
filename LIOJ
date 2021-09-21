@@ -14,6 +14,20 @@ print(bucket)
 
 
 
+##二進位
+
+dec = int(input("Pls enter number:"))
+bin = []
+while dec/2 > 0:
+    bin.append(str(dec % 2))
+    dec = dec // 2
+
+bin = bin[::-1]
+bin = "".join(bin)
+
+print(bin)
+
+
 
 #1013
 #費氏數列/ 費波那契數列
@@ -32,6 +46,7 @@ print(arr[n])
 
 n = input()
 print(int(n, 9))
+
 
 
 #1025 
