@@ -1,1 +1,12 @@
+#十進位轉二進位
 
+dec = int(input("Pls enter number:"))
+bin = []
+while dec/2 > 0:
+    bin.append(str(dec % 2))
+    dec = dec // 2
+
+bin = bin[::-1]
+bin = "".join(bin)
+
+print(bin)
