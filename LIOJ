@@ -14,7 +14,7 @@ print(bucket)
 
 
 
-##二進位
+##十進位轉二進位
 
 dec = int(input("Pls enter number:"))
 bin = []
