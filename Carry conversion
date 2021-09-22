@@ -1,8 +1,8 @@
 #十進位轉二進位
 
-dec = int(input("Pls enter number:"))
+dec = int(input("Pls enter decimal number:"))
 bin = []
-while dec/2 > 0:
+while dec / 2 > 0:
     bin.append(str(dec % 2))
     dec = dec // 2
 
@@ -22,3 +22,18 @@ for i in bin:
     dec = dec * 2 + int(i)
 
 print(dec)
+
+
+
+#十進位轉八進位
+
+dec = int(input("Pls enter decimal number:"))
+oct = []
+while dec / 8 > 0:
+    oct.append(str(dec % 8))
+    dec = dec // 8
+
+oct = oct[::-1]
+oct = "".join(oct)
+
+print(oct)
