@@ -52,3 +52,18 @@ print(dec)
 
 
 
+#十進位轉十六進位
+dec = int(input("Pls enter decimal number:"))
+digits = "0123456789ABCDEF"
+hex = ""
+
+while dec != 0:
+    hex = hex + digits[dec % 16]
+    dec = dec // 16
+
+hex = hex[::-1]
+print(hex)
+
+
+
+
