@@ -37,3 +37,18 @@ oct = oct[::-1]
 oct = "".join(oct)
 
 print(oct)
+
+
+
+#八進位轉十進位
+
+oct = input("Pls enter octet number:")
+
+dec = 0
+for i in oct:
+    dec = dec * 8 + int(i)
+
+print(dec)
+
+
+
