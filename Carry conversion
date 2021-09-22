@@ -10,3 +10,15 @@ bin = bin[::-1]
 bin = "".join(bin)
 
 print(bin)
+
+
+
+#二進位轉十進位
+
+bin = input("Enter a binary number:")
+
+dec = 0
+for i in bin:
+    dec = dec * 2 + int(i)
+
+print(dec)
