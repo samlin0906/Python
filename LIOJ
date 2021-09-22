@@ -25,14 +25,6 @@ for i in range(4, 21):
 print(arr[n])
 
 
-#1014 
-#九進位制
-#直接使用int進行進位轉換,想不出來如何設防呆機制
-
-n = input()
-print(int(n, 9))
-
-
 
 #1025 
 #水仙花數
