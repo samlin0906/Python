@@ -15,7 +15,7 @@ print(bin)
 
 #二進位轉十進位
 
-bin = input("Enter a binary number:")
+bin = input("Pls enter a binary number:")
 
 dec = 0
 for i in bin:
