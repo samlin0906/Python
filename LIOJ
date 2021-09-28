@@ -28,6 +28,7 @@ print(arr[n])
 
 #1020
 #質數
+#試除法
 
 n = int(input())
 for i in range(n):
