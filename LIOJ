@@ -26,6 +26,26 @@ print(arr[n])
 
 
 
+#1020
+#質數
+
+n = int(input())
+for i in range(n):
+    num = int(input())
+    is_prime = True           #預先設定,類使用while設定
+    for j in range(2, int(num ** 0.5) + 1):
+        if num % j == 0:               #相除為整數
+            is_prime = False
+            break               #判斷到某數可除盡便停止計算
+    if is_prime and num != 1:
+        print("Prime")
+    elif num == 1:
+        print("Composite")
+    else:
+        print("Composite")
+
+
+
 #1025 
 #水仙花數
 
