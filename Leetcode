@@ -1,5 +1,5 @@
 #7
-#不使用rstrip()或lstrip()
+#不使用rstrip(), lstrip(), abs()
 
 class Solution:
     def reverse(self, x: int) -> int:
