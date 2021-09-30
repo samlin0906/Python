@@ -1,0 +1,38 @@
+#7
+#不使用rstrip()或lstrip()
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        
+        remainder = x % 10                #驗證末碼是否為0
+        str_x = str(x)
+        if 2 ** 31 > x > 0:
+            if remainder != 0:
+                str_x = str_x[::-1]
+            elif remainder == 0:
+                str_x = str_x[::-1]
+                for i in range(len(str_x)):
+                    if int(str_x[i]) > 0:         #確認只刪除前面為0
+                        str_x = str_x[i:]
+                        break
+            if int(str_x) < 2 ** 31:
+                return str_x
+            else:
+                return 0
+        elif -2 ** 31 < x < 0:
+            str_x = str_x[1:]
+            if remainder != 0:
+                str_x = int(str_x[::-1]) * -1
+            elif remainder == 0:
+                str_x = str_x[::-1]
+                for i in range(len(str_x)):
+                    if int(str_x[i]) > 0:
+                        str_x = str_x[i:]
+                        break
+                str_x = int(str_x) * -1
+            if int(str_x) > -2 ** 31:
+                return str_x
+            else:
+                return 0
+        else:
+            return 0               #防呆
