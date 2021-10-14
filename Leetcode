@@ -1,4 +1,4 @@
-#7
+#007
 #不使用rstrip(), lstrip(), abs()
 
 class Solution:
@@ -36,3 +36,21 @@ class Solution:
                 return 0
         else:
             return 0               #防呆
+
+#014
+#縱向掃描
+
+class Solution(object):
+    def longestCommonPrefix(strs):
+
+        length = len(strs)
+        if length == 0:
+            return ""
+
+        index_length = len(strs[0])
+        for i in range(index_length):
+            for j in range(1, length):
+                if i == len(strs[j]) or strs[0][i] != strs[j][i]:         #反向掃描,如果string不相同的話; index_sting的length有可能不是最小,因此需設i == len(strs[j])
+                    return strs[0][:i]
+
+        return strs[0]
