@@ -54,3 +54,28 @@ class Solution(object):
                     return strs[0][:i]
 
         return strs[0]
+
+#020
+#Valid Parentheses
+#stack
+
+class Solution(object):
+    def isValid(s):
+
+        length = len(s)
+        if length % 2 != 0: 
+            return False
+
+        dict = {"(": ")", "[": "]", "{": "}"}
+        stack = []
+        keys = dict.keys()
+        for i in s:
+            if i in keys:
+                stack.append(i)
+            else:
+                if stack == []:                        #輸入值如果沒在dict的key的話, eg.)}
+                    return False
+                ch = stack.pop()
+                if i != dict[ch]:
+                    return False
+        return stack == []                             #輸入值如果為空的話,判定True
