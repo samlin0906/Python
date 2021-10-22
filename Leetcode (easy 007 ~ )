@@ -79,3 +79,17 @@ class Solution(object):
                 if i != dict[ch]:
                     return False
         return stack == []                             #輸入值如果為空的話,判定True
+
+#058 Length of Last Word
+
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        
+        length = len(s)
+        count = 0
+        for i in range(length-1, -1, -1):            # for(i = length - 1;i >= 0;i--)
+            if s[i] != " ":
+                count = count + 1
+            if s[i] == " " and count != 0:
+                break
+        return count
