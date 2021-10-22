@@ -81,6 +81,7 @@ class Solution(object):
         return stack == []                             #輸入值如果為空的話,判定True
 
 #058 Length of Last Word
+#不使用strip
 
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
