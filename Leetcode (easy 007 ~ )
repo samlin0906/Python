@@ -96,6 +96,7 @@ class Solution:
         return count
 
 #066 Plus One
+#不使用insert()
 
 class Solution:
     def plusOne(digits):
