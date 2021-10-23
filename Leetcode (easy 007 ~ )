@@ -94,3 +94,22 @@ class Solution:
             elif s[i] == " " and count != 0:
                 break
         return count
+
+#066 Plus One
+
+class Solution:
+    def plusOne(digits):
+
+        length = len(digits)
+        for i in range(length - 1, -1, -1):
+            if digits[i] != 9:
+                digits[i] = digits[i] + 1
+                break
+            digits[i] = 0
+
+        if digits[0] == 0:
+            arr = [1]                            #digits.insert(0, 1)
+            for i in digits:
+                arr.append(i)
+            return arr
+        return digits
