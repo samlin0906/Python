@@ -114,3 +114,35 @@ class Solution:
                 arr.append(i)
             return arr
         return digits
+
+//067 Add Binary
+
+class Solution:
+    def addBinary(a, b):
+
+        sum = ""
+        carry = 0
+        length_a = len(a)
+        length_b = len(b)
+        if length_a > length_b:
+            b = (length_a - length_b) * "0" + b
+        else:
+            a = (length_b - length_a) * "0" + a
+
+        for i in range(len(a) - 1, -1, -1):                           #不能夠寫length(a), 因為a的長度已改變
+            pre_sum = int(a[i]) + int(b[i]) + carry
+            if pre_sum == 0:
+                sum += "0"
+                carry = 0
+            elif pre_sum == 1:
+                sum += "1"
+                carry = 0
+            elif pre_sum == 2:
+                sum += "0"
+                carry = 1
+            else:
+                carry = 1
+                sum += "1"
+            if i == 0 and carry:
+                sum += str(carry)
+        return sum[::-1]
