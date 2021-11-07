@@ -1,0 +1,25 @@
+//影片檔轉執行檔
+
+import cv2
+
+video_file = "c:/......ocuments/KingJet/Test.mp4"                                     #注意斜線方向
+output_file = "c:/......Documents/KingJet/Picture/"                                   #末尾需加斜線
+
+vc = cv2.VideoCapture(video_file)
+c = 1
+if vc.isOpened():
+    rval, frame = vc.read()
+else:
+    print("open error")
+    rval = False
+
+timeF = 100
+while rval:
+    print(1)
+    rval, frame = vc.read()
+    if c % timeF == 0:
+        print(2)
+        cv2.imwrite(output_file + str(int(c / timeF)) + ".jpg", frame)
+    c = c + 1
+    cv2.waitKey(1)
+vc.release()
