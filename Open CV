@@ -30,7 +30,7 @@ import time
 import numpy as np
 import cv2
 
-img = cv2.imread('image.jpg')
+img = cv2.imread('image.jpg')                                               #輸入檔案位置
 
 data = img.shape
 # 高度, 寬度, (blue, green, red)
@@ -39,7 +39,7 @@ print(type(data[0]))
 new_img = img
 for i in range(data[0]):
     for j in range(data[1]):
-        if new_img[i, j, 0] > 0 and new_img[i, j, 2] > 100:
+        if new_img[i, j, 0] > 0 and new_img[i, j, 2] > 100:                          #圖像二值化
             new_img[i, j, 0] = 255
             new_img[i, j, 1] = 255
             new_img[i, j, 2] = 255
