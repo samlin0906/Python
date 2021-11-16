@@ -23,3 +23,77 @@ while rval:
     c = c + 1
     cv2.waitKey(1)
 vc.release()
+
+
+import time
+
+import numpy as np
+import cv2
+
+img = cv2.imread('image.jpg')
+
+data = img.shape
+# 高度, 寬度, (blue, green, red)
+print(data)
+print(type(data[0]))
+new_img = img
+for i in range(data[0]):
+    for j in range(data[1]):
+        if new_img[i, j, 0] > 0 and new_img[i, j, 2] > 100:
+            new_img[i, j, 0] = 255
+            new_img[i, j, 1] = 255
+            new_img[i, j, 2] = 255
+        else:
+            new_img[i, j] = [0, 0, 0]
+high = []
+count = 0
+for i in range(data[0]):
+    for j in range(data[1]):
+
+        if new_img[i, j, 0] == 255 and new_img[i, j, 1] == 255 and new_img[i, j, 2] == 255:
+            count = i
+            break
+    if count > 0:
+        break
+high.append(count)
+count = 0
+for i in range(data[0]):
+    for j in range(data[1]):
+        h = data[0] - i - 1
+        # print(h, j)
+        if new_img[h, j, 0] == 255 and new_img[h, j, 1] == 255 and new_img[h, j, 2] == 255:
+            count = h
+
+            break
+    if count > 0:
+        break
+
+high.append(count)
+print("high=", high)
+
+width = []
+count = 0
+for i in range(data[1]):
+    for j in range(data[0]):
+        if new_img[i, j, 0] == 255 and new_img[i, j, 1] == 255 and new_img[i, j, 2] == 255:
+            count = i
+            break
+    if count > 0:
+        break
+width.append(count)
+count = 0
+for i in range(data[1]):
+    for j in range(data[0]):
+        w = data[1] - i - 1
+        # print(h, j)
+        if new_img[j, w, 0] == 255 and new_img[j, w, 1] == 255 and new_img[j, w, 2] == 255:
+            count = w
+
+            break
+    if count > 0:
+        break
+
+width.append(count)
+print("width=", width)
+print("center=", "X=", int((width[0] + width[1]) / 2), "Y=", int((high[0] + high[1]) / 2))
+cv2.imwrite('output.jpg', new_img)
