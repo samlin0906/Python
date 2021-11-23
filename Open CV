@@ -25,7 +25,7 @@ while rval:
 vc.release()
 
 
-//尋找圖像中心點
+//尋找圖像中心點 version 1.0
 
 import time
 
@@ -98,4 +98,107 @@ for i in range(data[1]):
 width.append(count)
 print("width=", width)
 print("center=", "X=", int((width[0] + width[1]) / 2), "Y=", int((high[0] + high[1]) / 2))
+cv2.imwrite('output.jpg', new_img)
+
+
+//尋找圖像中心點 version 1.1
+
+import time
+
+import numpy as np
+import cv2
+
+img = cv2.imread('image_0.jpg')
+
+data = img.shape
+# 高度, 寬度, (blue, green, red)
+print(data)
+
+new_img = img
+for i in range(data[0]):
+    for j in range(data[1]):
+        if new_img[i, j, 0] > 0 and new_img[i, j, 2] > 100:
+            new_img[i, j, 0] = 255
+            new_img[i, j, 1] = 255
+            new_img[i, j, 2] = 255
+        else:
+            new_img[i, j] = [0, 0, 0]
+
+high = []
+count = 0
+line = 0
+for i in range(data[0]):
+    for j in range(data[1]):
+        if new_img[i, j, 0] == 255 and new_img[i, j, 1] == 255 and new_img[i, j, 2] == 255:
+            count = i
+            line = line + 1
+            break
+    if line >= 5:
+        break
+high.append(count)
+count = 0
+line = 0
+for i in range(data[0]):
+    for j in range(data[1]):
+        h = data[0] - i - 1
+        # print(h, j)
+        if new_img[h, j, 0] == 255 and new_img[h, j, 1] == 255 and new_img[h, j, 2] == 255:
+            count = h
+            line = line + 1
+            break
+    if line >= 5:
+        break
+
+high.append(count)
+print("high=", high)
+
+width = []
+count = 0
+line = 0
+for i in range(data[1]):
+    for j in range(data[0]):
+        if new_img[j, i, 0] == 255 and new_img[j, i, 1] == 255 and new_img[j, i, 2] == 255:
+            count = i
+            line = line + 1
+            break
+    if line >= 5:
+        break
+width.append(count)
+count = 0
+line = 0
+for i in range(data[1]):
+    for j in range(data[0]):
+        w = data[1] - i - 1
+        # print(h, j)
+        if new_img[j, w, 0] == 255 and new_img[j, w, 1] == 255 and new_img[j, w, 2] == 255:
+            count = w
+
+            line = line + 1
+            break
+    if line >= 5:
+        break
+
+width.append(count)
+print("width=", width)
+print("center=", "X=", int((width[0] + width[1]) / 2), "Y=", int((high[0] + high[1]) / 2))
+
+# for i in range(5):
+#     x = int((width[0] + width[1]) / 2) + i
+#     for j in range(5):
+#         y = int((high[0] + high[1]) / 2) + j
+#         new_img[x, y, 0] = 255
+#         new_img[x, y, 1] = 255
+#         new_img[x, y, 2] = 0
+for i in range(data[1]):
+    y = int((high[0] + high[1]) / 2)
+    new_img[y, i, 0] = 255
+    new_img[y, i, 1] = 255
+    new_img[y, i, 2] = 0
+for i in range(data[0]):
+    x = int((width[1] + width[0]) / 2)
+    # x = int(width[0])
+    new_img[i, x, 0] = 255
+    new_img[i, x, 1] = 255
+    new_img[i, x, 2] = 0
+
 cv2.imwrite('output.jpg', new_img)
