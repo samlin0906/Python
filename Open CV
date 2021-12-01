@@ -25,6 +25,37 @@ while rval:
 vc.release()
 
 
+//圖片上點擊後顯示點和座標
+//鼠標事件
+
+import cv2
+
+img = cv2.imread("sample.jpg")
+data = img.shape
+print(data)
+
+
+def on_EVENT_LBUTTONDOWN(event, x, y, flags, param):                                         //特定寫法,不可減少變數
+    if event == cv2.EVENT_LBUTTONDOWN:
+        xy = "%d,%d" % (x, y)
+        print(xy)
+        cv2.circle(img, (x, y), 1, (255, 0, 0), thickness=-1)
+        cv2.putText(img, xy, (x, y), cv2.FONT_HERSHEY_PLAIN,
+                    1.0, (0, 0, 0), thickness=1)
+        cv2.imshow("image", img)
+
+
+cv2.namedWindow("image")
+cv2.setMouseCallback("image", on_EVENT_LBUTTONDOWN)
+cv2.imshow("image", img)
+
+while True:
+    cv2.imshow('image', img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):  # 按q键退出
+        break
+cv2.destroyAllWindows()
+
+
 //尋找圖像中心點 version 1.0
 
 import time
