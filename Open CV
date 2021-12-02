@@ -51,7 +51,7 @@ cv2.imshow("image", img)
 
 while True:
     cv2.imshow('image', img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):  # 按q键退出
+    if cv2.waitKey(1) & 0xFF == ord('q'):                      # 按q键退出; 64位系统ㄝ, 要加& 0xFF
         break
 cv2.destroyAllWindows()
 
