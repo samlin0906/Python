@@ -72,7 +72,7 @@ def cutPicture():
         cropImg = image[106:431, 213:649]                                               // 裁剪 [y0:y1, x0:x1]
         save_path = "C:/........../KingJet/Picture"
         save_path_file = os.path.join(save_path, str(count) + ".jpg")
-        cv2.imwrite(save_path_file, cropImg)                                            //存檔
+        cv2.imwrite(save_path_file, cropImg)                                            
         count = count + 1
 
 path = "C:......./KingJet/Picture"
@@ -249,3 +249,20 @@ for i in range(data[0]):
     new_img[i, x, 2] = 0
 
 cv2.imwrite('output.jpg', new_img)
+
+
+//縮小圖案
+
+import cv2
+
+img = cv2.imread("sample.jpg")
+data = img.shape
+print(data)
+scale_percent = 50                                                                  // 要放大縮小幾%
+width = int(img.shape[1] * scale_percent / 100)                                     //縮放後圖片寬度
+height = int(img.shape[0] * scale_percent / 100)                                    //縮放後圖片高度
+dim = (width, height)                                                               //圖片形狀
+print(dim)
+resize_img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
+cv2.imshow("resize", resize_img)
+cv2.waitKey(0)
