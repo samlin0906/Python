@@ -14,3 +14,16 @@ resize_img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
 cv2.imshow("resize", resize_img)
 cv2.waitKey(0)
 
+
+//鎖定特定顏色
+
+import cv2
+import numpy as np
+
+image = cv2.imread('sample.jpg')
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+lower_green = np.array([156, 43, 46])
+upper_green = np.array([180, 255, 255])
+mask = cv2.inRange(hsv, lower_green, upper_green)
+cv2.imshow("show", mask)
+cv2.waitKey(0)
