@@ -1,11 +1,11 @@
-//縮小圖案
+#縮小圖案
 
 import cv2
 
 img = cv2.imread("sample.jpg")
 data = img.shape
 print(data)
-scale_percent = 50                                                                  // 要放大縮小幾%
+scale_percent = 50                                                                  //要放大縮小幾%
 width = int(img.shape[1] * scale_percent / 100)                                     //縮放後圖片寬度
 height = int(img.shape[0] * scale_percent / 100)                                    //縮放後圖片高度
 dim = (width, height)                                                               //圖片形狀
@@ -15,7 +15,7 @@ cv2.imshow("resize", resize_img)
 cv2.waitKey(0)
 
 
-//鎖定特定顏色
+#鎖定特定顏色
 
 import cv2
 import numpy as np
@@ -27,3 +27,36 @@ upper_green = np.array([180, 255, 255])
 mask = cv2.inRange(hsv, lower_green, upper_green)
 cv2.imshow("show", mask)
 cv2.waitKey(0)
+
+#調整亮度跟飽和度
+
+import cv2
+import numpy as np
+
+def main():
+
+    img = cv2.imread("sample.jpg")
+    fImg = img.astype(np.float32)                                     #把圖像變成(0, 1),且轉換為浮點
+    fImg = fImg / 255
+    hlsImg = cv2.cvtColor(fImg, cv2.COLOR_BGR2HLS)                    #BGR -> HLS
+    hlsCopy = np.copy(hlsImg)
+    
+    lightness = 150                                                  
+    saturation = 0
+    
+    hlsCopy[:, :, 1] = (1 + lightness / 100.0) * hlsCopy[:, :, 1]     # 亮度 調整為  "1 +/- 幾 %"
+    hlsCopy[:, :, 1][hlsCopy[:, :, 1] > 1] = 1                        # 介於 0~1，超過1 = 1
+
+    hlsCopy[:, :, 2] = (1 + saturation / 100.0) * hlsCopy[:, :, 2]    # 飽和度 調整為 "1 +/- 幾 %"
+    hlsCopy[:, :, 2][hlsCopy[:, :, 2] > 1] = 1  
+
+  
+    result_img = cv2.cvtColor(hlsCopy, cv2.COLOR_HLS2BGR)
+    result_img = ((result_img * 255).astype(np.uint8))                #需先乘255,以免unit8時被截斷
+    cv2.imshow("output", result_img)
+    cv2.waitKey(0)
+    cv2.destroyWindow()
+
+if __name__== "__main__":
+    main()
+
