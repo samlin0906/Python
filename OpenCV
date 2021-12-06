@@ -60,3 +60,46 @@ def main():
 if __name__== "__main__":
     main()
 
+
+#調整色調(冷色系/暖色系)、色溫(白平衡)
+
+import cv2
+import numpy as np
+
+img = cv2.imread("cat_1.jpg")
+
+imgB = img[:, :, 0]
+imgG = img[:, :, 1]
+imgR = img[:, :, 2]
+
+# 白平衡,三個值變化相同
+# 冷色調,除了b之外都增加
+# 暖色調,除了r之外都增加
+bAve = cv2.mean(imgB)[0]
+gAve = cv2.mean(imgG)[0] + 40
+rAve = cv2.mean(imgR)[0] + 40
+aveGray = int(bAve + gAve + rAve) / 3
+
+#增益係數
+bCoef = aveGray / bAve
+gCoef = aveGray / gAve
+rCoef = aveGray / rAve
+imgB = np.floor((imgB * bCoef))                    ## 向下取整數
+imgG = np.floor((imgG * gCoef))
+imgR = np.floor((imgR * rCoef))
+
+imgb = imgB
+imgb[imgb > 255] = 255
+
+imgg = imgG
+imgg[imgg > 255] = 255
+
+imgr = imgR
+imgr[imgr > 255] = 255
+
+rgb = np.dstack((imgb, imgg, imgr)).astype(np.uint8)               #轉換成RGB
+
+cv2.imshow("output", rgb)
+# cv2.imwrite("Cool color_cat.jpg", rgb)
+cv2.waitKey(0)
+cv2.destroyWindow("output")
