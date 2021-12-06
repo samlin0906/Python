@@ -25,8 +25,10 @@ hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 lower_green = np.array([156, 43, 46])
 upper_green = np.array([180, 255, 255])
 mask = cv2.inRange(hsv, lower_green, upper_green)
-cv2.imshow("show", mask)
+color = cv2.bitwise_and(image, image, mask=mask)
+cv2.imshow("show", color)
 cv2.waitKey(0)
+cv2.destroyWindow("show")
 
 #調整亮度跟飽和度
 
