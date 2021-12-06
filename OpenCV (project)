@@ -1,4 +1,4 @@
-//影片檔轉圖檔
+#影片檔轉圖檔
 
 import cv2
 
@@ -25,8 +25,8 @@ while rval:
 vc.release()
 
 
-//圖片上點擊後顯示點和座標
-//鼠標事件
+#圖片上點擊後顯示點和座標
+#鼠標事件
 
 import cv2
 
@@ -39,7 +39,7 @@ def on_EVENT_LBUTTONDOWN(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         xy = "%d,%d" % (x, y)
         print(xy)
-        cv2.circle(img, (x, y), 1, (255, 0, 0), thickness = -1)                                         //thickness, 封閉圖形= -1, 填充圖形= 1(default) 
+        cv2.circle(img, (x, y), 1, (255, 0, 0), thickness = -1)                                         #thickness, 封閉圖形= -1, 填充圖形= 1(default) 
         cv2.putText(img, xy, (x, y), cv2.FONT_HERSHEY_PLAIN,
                     1.0, (0, 0, 0), thickness = 1)
         cv2.imshow("image", img)
@@ -51,12 +51,12 @@ cv2.imshow("image", img)
 
 while True:
     cv2.imshow('image', img)
-    if cv2.waitKey(1) & 0xFF == ord('q'):                      // 按q键退出; 64位系统ㄝ, 要加& 0xFF
+    if cv2.waitKey(1) & 0xFF == ord('q'):                                            #按q键退出; 64位系统ㄝ, 要加& 0xFF
         break
 cv2.destroyAllWindows()
 
 
-//批次裁減圖檔
+#批次裁減圖檔
 
 import cv2
 import os
@@ -69,7 +69,7 @@ def cutPicture():
         file_path = os.path.join(path, file)
         print(file_path)
         image = cv2.imread(file_path)                          
-        cropImg = image[106:431, 213:649]                                               // 裁剪 [y0:y1, x0:x1]
+        cropImg = image[106:431, 213:649]                                                        #裁剪 [y0:y1, x0:x1]
         save_path = "C:/........../KingJet/Picture"
         save_path_file = os.path.join(save_path, str(count) + ".jpg")
         cv2.imwrite(save_path_file, cropImg)                                            
@@ -80,14 +80,14 @@ cutPicture()
 
 
 
-//尋找圖像中心點 version 1.0
+#尋找圖像中心點 version 1.0
 
 import time
 
 import numpy as np
 import cv2
 
-img = cv2.imread('image.jpg')                                               //輸入檔案位置
+img = cv2.imread('image.jpg')                                               #輸入檔案位置
 
 data = img.shape
 # 高度, 寬度, (blue, green, red)
@@ -97,7 +97,7 @@ new_img = img
 for i in range(data[0]):
     for j in range(data[1]):
         if new_img[i, j, 0] > 0 and new_img[i, j, 2] > 100:                          
-            new_img[i, j, 0] = 255                                                    //圖像二值化; void cvThreshold
+            new_img[i, j, 0] = 255                                                    #圖像二值化; void cvThreshold
             new_img[i, j, 1] = 255
             new_img[i, j, 2] = 255
         else:
@@ -156,7 +156,7 @@ print("center=", "X=", int((width[0] + width[1]) / 2), "Y=", int((high[0] + high
 cv2.imwrite('output.jpg', new_img)
 
 
-//尋找圖像中心點 version 1.1
+#尋找圖像中心點 version 1.1
 
 import time
 
@@ -165,7 +165,7 @@ import cv2
 
 img = cv2.imread('image_0.jpg')
 
-data = img.shape                                           // 高度, 寬度, (blue, green, red)
+data = img.shape                                                                  #高度, 寬度, (blue, green, red)
 print(data)
 
 new_img = img
