@@ -162,7 +162,7 @@ blur_img2 = cv2.blur(img, (5, 5))                                           #平
 
 ret1, th1 = cv2.threshold(blur, 127, 255, cv2.THRESH_BINARY)                #一般圖二值化
 ret2, th2 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)  #大津二值化
-th3 = cv2.adaptiveThreshold(blur_img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)         #術平均法的自適應二值化
+th3 = cv2.adaptiveThreshold(blur_img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)         #算術平均法的自適應二值化
 th4 = cv2.adaptiveThreshold(blur_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)    #高斯加權均值法自適應二值化
 
 
