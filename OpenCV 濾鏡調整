@@ -105,3 +105,25 @@ cv2.imshow("output", rgb)
 # cv2.imwrite("Cool color_cat.jpg", rgb)
 cv2.waitKey(0)
 cv2.destroyWindow("output")
+
+
+#調整對比度
+
+import cv2
+import math
+import numpy as np
+
+img = cv2.imread("cat_1.jpg")
+brightness = 0
+contrast = 150                                                                 # - 減少對比度/+ 增加對比度
+
+B = brightness / 255.0                                                 
+c = contrast / 255.0                                                           #contrast = (-255, +255)，代表 c = (-1, +1)
+k = math.tan((45 + 44 * c) / 180 * math.pi)
+
+img = (img - 127.5 * (1 - B)) * k + 127.5 * (1 + B)
+img = np.clip(img, 0, 255).astype(np.uint8)                                    #所有值介於 0~255 之間
+
+cv2.imshow("output", img)
+cv2.waitKey(0)
+cv2.destroyWindow("output")
