@@ -146,3 +146,26 @@ edges = cv2.Canny(blur_gray, low_threshold, high_threshold)                     
 cv2.imshow("output", edges)
 cv2.waitKey(0)
 cv2.destroyWindow("output")
+
+#圖片平滑模糊化
+#圖片二值化
+
+import cv2
+
+img = cv2.imread("43.jpg", 0)                                               #轉灰階
+# img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#降躁
+blur = cv2.GaussianBlur(img, (5, 5), 0)                                     #高斯濾波 
+blur_img = cv2.medianBlur(img, 5)                                           #中值濾波
+blur_img2 = cv2.blur(img, (5, 5))                                           #平均濾波
+
+ret1, th1 = cv2.threshold(blur, 127, 255, cv2.THRESH_BINARY)                #一般圖二值化
+ret2, th2 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)  #大津二值化
+th3 = cv2.adaptiveThreshold(blur_img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)         #術平均法的自適應二值化
+th4 = cv2.adaptiveThreshold(blur_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)    #高斯加權均值法自適應二值化
+
+
+cv2.imshow("output", th1)
+cv2.waitKey(0)
+cv2.destroyWindow("output")
