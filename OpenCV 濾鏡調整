@@ -169,3 +169,18 @@ th4 = cv2.adaptiveThreshold(blur_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.T
 cv2.imshow("output", th1)
 cv2.waitKey(0)
 cv2.destroyWindow("output")
+
+
+#銳化圖片
+
+import cv2
+
+img = cv2.imread("Bobo.jpg")
+
+sigma = 10
+blur_img = cv2.GaussianBlur(img, (0, 0), sigma)
+usm = cv2.addWeighted(img, 1.5, blur_img, -0.5, 0)                                   #以原圖 : 模糊圖片= 1.5 : -0.5 的比例進行混合
+
+cv2.imshow("output", usm)
+cv2.waitKey(0)
+cv2.destroyWindow("output")
