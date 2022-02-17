@@ -156,6 +156,7 @@ cv2.imwrite('output.jpg', new_img)
 
 
 #尋找圖像中心點 version 1.1
+#排除雜訊,以增加定位點準確度
 
 import time
 
@@ -164,7 +165,7 @@ import cv2
 
 img = cv2.imread('image_0.jpg')
 
-data = img.shape                                                                  #高度, 寬度, (blue, green, red)
+data = img.shape                                                                 
 print(data)
 
 new_img = img
@@ -184,7 +185,7 @@ for i in range(data[0]):
     for j in range(data[1]):
         if new_img[i, j, 0] == 255 and new_img[i, j, 1] == 255 and new_img[i, j, 2] == 255:
             count = i
-            line = line + 1
+            line = line + 1                                                                        #新增部分,排除雜訊
             break
     if line >= 5:
         break
