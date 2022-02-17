@@ -12,7 +12,7 @@ def on_EVENT_LBUTTONDOWN(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         xy = "%d,%d" % (x, y)
         print(xy)
-        cv2.circle(img, (x, y), 1, (255, 0, 0), thickness = -1)                                         #thickness, 封閉圖形= -1, 填充圖形= 1(default) 
+        cv2.circle(img, (x, y), 1, (255, 0, 0), thickness = -1)                      #thickness, 封閉圖形= -1, 填充圖形= 1(default), 黑色=0, 白色=255
         cv2.putText(img, xy, (x, y), cv2.FONT_HERSHEY_PLAIN,
                     1.0, (0, 0, 0), thickness = 1)
         cv2.imshow("image", img)
