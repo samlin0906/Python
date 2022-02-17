@@ -54,7 +54,7 @@ def main():
 
   
     result_img = cv2.cvtColor(hlsCopy, cv2.COLOR_HLS2BGR)
-    result_img = ((result_img * 255).astype(np.uint8))                #需先乘255,以免unit8時被截斷
+    result_img = ((result_img * 255).astype(np.uint8))                #需先乘255,以免unit8時被截斷,因每象素皆為8位元組成 
     cv2.imshow("output", result_img)
     cv2.waitKey(0)
     cv2.destroyWindow()
