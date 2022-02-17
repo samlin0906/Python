@@ -113,6 +113,7 @@ cv2.destroyWindow("output")
 
 
 #調整對比度
+#使用圓周的正切函數
 
 import cv2
 import math
