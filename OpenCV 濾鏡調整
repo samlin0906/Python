@@ -1,4 +1,5 @@
 #縮小圖案
+#調整長、寬
 
 import cv2
 
@@ -16,6 +17,7 @@ cv2.waitKey(0)
 
 
 #鎖定特定顏色
+#轉換至HSV
 
 import cv2
 import numpy as np
@@ -30,7 +32,9 @@ cv2.imshow("show", color)
 cv2.waitKey(0)
 cv2.destroyWindow("show")
 
+
 #調整亮度跟飽和度
+#轉換至HLS
 
 import cv2
 import numpy as np
