@@ -68,6 +68,7 @@ if __name__== "__main__":
 
 
 #調整色調(冷色系/暖色系)、色溫(白平衡)
+#調整BGR係數,最後轉換至RGB
 
 import cv2
 import numpy as np
