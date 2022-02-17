@@ -24,8 +24,8 @@ image = cv2.imread('sample.jpg')
 hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 lower_green = np.array([156, 43, 46])
 upper_green = np.array([180, 255, 255])
-mask = cv2.inRange(hsv, lower_green, upper_green)
-color = cv2.bitwise_and(image, image, mask=mask)
+mask = cv2.inRange(hsv, lower_green, upper_green)                                    #新增HSV(色相、飽和度、明度)顏色邊界和閾值HSV圖像
+color = cv2.bitwise_and(image, image, mask=mask)                                     #逐位元與運算, 將特定顏色加入原始圖片 
 cv2.imshow("show", color)
 cv2.waitKey(0)
 cv2.destroyWindow("show")
